@@ -47,11 +47,6 @@ function createMap(earthquakes){
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     })
 
-    // Create a baseMaps object to hold the lightmap layer.
-    let baseMaps = {
-    "Street Layer": base
-    };
-
     // Create an overlayMaps object to hold the Earthquake marker layer.
     let overlayMaps = {
     "Earthquakes": earthquakes
