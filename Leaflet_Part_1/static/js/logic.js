@@ -15,32 +15,31 @@ function getColor(d) {
 
 function createMarkers(data){
     console.log(data);
-    console.log(data.features[0]);
 
-    let earthquakes = L.geoJSON(data.features, {
-        pointToLayer: createCircleMarker,
-        onEachFeature: onEachFeature
-      });
+    let earthquakes = [];
 
-    // Create a circle marker
-    function createCircleMarker(feature, latlng) {
-        let depth = feature.geometry.coordinates[2];
-          
-    return L.circle(latlng, {
-        radius: feature.properties.mag * 15000,
-        fillColor: getColor(depth),
-        color: "#000", 
-        weight: .5,
-        fillOpacity: 1
-        });
+    for (i = 0; i < data.features.length; i++){
+        earthquake = data.features[i];
+        let depth2 = earthquake.geometry.coordinates[2];
+        let latlng = [earthquake.geometry.coordinates[1], 
+                    earthquake.geometry.coordinates[0]];
+
+        earthquakes.push(
+            L.circle(latlng, {
+                radius: earthquake.properties.mag * 15000,
+                fillColor: getColor(depth2),
+                color: "#000", 
+                weight: .5,
+                fillOpacity: 1
+            }).bindPopup(`<h3>${earthquake.properties.title}</h3><hr>`+
+                `<p> Date: ${new Date(earthquake.properties.time)}</p>`+
+                `<p> Significance Level (0-1000): ${earthquake.properties.sig}</p>`+
+                `<p> Depth: ${depth2} km</p>`)
+         ) ;
     }
-    function onEachFeature(feature, layer) {
-        layer.bindPopup(`<h3>${feature.properties.title}</h3><hr>`+
-        `<p> Date: ${new Date(feature.properties.time)}`+
-        `<p> Significance Level (0-1000): ${feature.properties.sig}`+
-        `<p> Depth: ${feature.geometry.coordinates[2]} km`);
-      } 
-    createMap(earthquakes);
+    let earthquake_layer = L.layerGroup(earthquakes);
+
+    createMap(earthquake_layer);
 }
 function createMap(earthquakes){
     // Create the tile layer (background) for map
@@ -53,7 +52,7 @@ function createMap(earthquakes){
     "Street Layer": base
     };
 
-    // Create an overlayMaps object to hold the bikeStations layer.
+    // Create an overlayMaps object to hold the Earthquake marker layer.
     let overlayMaps = {
     "Earthquakes": earthquakes
     };
@@ -86,7 +85,6 @@ function createMap(earthquakes){
         return div;
     };
 
-legend.addTo(myMap);
-
+    legend.addTo(myMap);
 }
 
