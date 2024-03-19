@@ -18,16 +18,16 @@ function createMarkers(data){
         //add circle polygon for each earthquake with options below
         earthquakes.push(
             L.circle(latlng, {
-                radius: earthquake.properties.mag * 15000,  // set radius of circle to magnitude (scaled in meters)
+                radius: earthquake.properties.mag * 25000,  // set radius of circle to magnitude (scaled in meters)
                 fillColor: getColor(depth),     // set fill color based on depth (call getColor function to assign color)
                 color: "#000",                  // set outline to black 
                 weight: .5,                     // set circle outline stroke weight
                 fillOpacity: 1                  // set fill opacity
             //set pop-up to inclue title (includes mag and location), date, sig level, and depth.
             }).bindPopup(`<h3>${earthquake.properties.title}</h3><hr>`+         
-                `<p> Date: ${new Date(earthquake.properties.time)}</p>`+
-                `<p> Significance Level (0-1000): ${earthquake.properties.sig}</p>`+
-                `<p> Depth: ${depth} km</p>`)
+                `<p> <b>Date:</b> ${new Date(earthquake.properties.time)}</p>`+
+                `<p> <b>Significance Level (0-1000):</b> ${earthquake.properties.sig}</p>`+
+                `<p> <b>Depth:</b> ${depth} km</p>`)
          ) ;
     }
     let earthquake_layer = L.layerGroup(earthquakes);   // create overlay layer group 

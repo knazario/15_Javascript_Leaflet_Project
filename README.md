@@ -29,6 +29,6 @@ https://leafletjs.com/examples/choropleth/#custom-legend-control
 https://leafletjs.com/examples/choropleth/
 
 Leaflet Part 2: (Bonus)
-- Reading in local JSON file <br/> 
+- Reading in local JSON file using jQuery library (jQuery.getJSON()) <br/> 
 https://api.jquery.com/jQuery.getJSON/
 
