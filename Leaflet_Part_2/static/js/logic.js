@@ -1,16 +1,12 @@
 // Perform an API call
 // Pulling all 1.0 and larger earthquakes in the last 7 days 
-const url = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_week.geojson';
+const URL = 'https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_week.geojson';
 
-const url_plates ='https://github.com/fraxen/tectonicplates/blob/master/GeoJSON/PB2002_boundaries.json';
+const URL_PLATES ='http://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json';
 
 
-d3.json(url).then(function (data){
-    //d3.json(url_plates).then(function(plates_data){
-    //    createMarkers(data,plates_data);
-    //})
-    jQuery.getJSON('PB2002_boundaries.json', function(plates_data) {
-        // Add the GeoJSON layer to the map
+d3.json(URL).then(function (data){
+    d3.json(URL_PLATES).then(function(plates_data){
         createMarkers(data,plates_data);
     })
 })
@@ -95,7 +91,7 @@ function createMap(earthquake_layer, plate_layer){
     // Create the map object with options.
     let myMap = L.map("map", {
     center: [38.5, -96.5],     // Center of World [11.75, 18.05]
-    zoom: 5,
+    zoom: 4,
     layers: [base, plate_layer, earthquake_layer]
     });
 

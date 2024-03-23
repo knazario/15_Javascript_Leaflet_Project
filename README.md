@@ -7,14 +7,11 @@ The project was broken up into 2 parts/maps. Part 1 included a base layer map wi
 
 Part 2 was completed by adding a tectonic plate layer and an additional base layer (topographic). 
 
-#### Additional Notes
-Part 2 was completed using a local JSON file until another solution can be determined. 
-
 ### Data
 For this project, data was accessed/loaded using a D3 JSON promise request from USGS (see Data Reference below).
 The dataset for this map contains all earthquakes from the last 7 days that have a magnitude or 1.0 or larger. 
 
-For part 2, a local JSON file was downlaoded as a workaround for tectonic boundaries from https://github.com/fraxen/tectonicplates
+For part 2, a D3 JSON promise was used to pull the tectonic boundaries from https://github.com/fraxen/tectonicplates
 
 ### Data Reference
 Dataset created by the [United States Geological SurveyLinks (USGS)](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php).

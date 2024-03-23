@@ -26,7 +26,7 @@ function createMarkers(data){
             //set pop-up to inclue title (includes mag and location), date, sig level, and depth.
             }).bindPopup(`<h3>${earthquake.properties.title}</h3><hr>`+         
                 `<p> <b>Date:</b> ${new Date(earthquake.properties.time)}</p>`+
-                `<p> <b>Significance Level (0-1000):</b> ${earthquake.properties.sig}</p>`+
+                `<p> <b>Magnitude:</b> ${earthquake.properties.mag}</p>`+
                 `<p> <b>Depth:</b> ${depth} km</p>`)
          ) ;
     }
